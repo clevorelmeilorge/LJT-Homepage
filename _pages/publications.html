@@ -6,7 +6,7 @@ layout: archive
 {{ content }}
 
 <ul class="taxonomy__index">
-  {% assign publicationsByYear = site.publications | where_exp: "item", "item.hidden != true" | group_by_exp: 'publications', 'publications.year' | sort: 'name' | reverse %}
+  {% assign publicationsByYear = site.publications | where_exp: "item", "item.hidden != true" | group_by_exp: 'publications', 'publications.date | date: "%Y"' | sort: 'name' | reverse %}
   {% for year in publicationsByYear %}
     <li>
       <a href="#{{ year.name }}">
